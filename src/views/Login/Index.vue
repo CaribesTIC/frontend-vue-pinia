@@ -2,7 +2,7 @@
   import Form from "./Form.vue";
   import { useLogin } from './useLogin'
 
-  const { error, login, sending } = useLogin()
+  const { login, sending, error } = useLogin()
 </script>
 
 <template>
@@ -11,8 +11,8 @@
     <Form
       class="p-5 bg-white border rounded shadow"
       @submit='login'
-      :error='error'
       :sending='sending'
+      :error='error'      
     />
     <p class="mt-2 text-center text-gray-500">
       <router-link
