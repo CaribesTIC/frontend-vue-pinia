@@ -1,7 +1,7 @@
 import axios from "axios";
 import init from "./init";
 
-class Http {
+export class Http {
   constructor( init ) {    
     this.defaultInit()    
     let service = axios.create({
@@ -44,21 +44,21 @@ class Http {
     });
   }
 
-  post(path, bodyPayload = false) {
+  post(path, payload = false) {
     return this.service.request({
       method: "POST",
       url: path,
       responseType: "json",
-      data: bodyPayload
+      data: payload
     });
   }
 
-  delete(path, bodyPayload = false) {
+  delete(path, payload = false) {
     return this.service.request({
       method: "DELETE",
       url: path,
       responseType: "json",
-      data: bodyPayload
+      data: payload
     });
   }
 }
