@@ -17,6 +17,7 @@
       <button
         @click="isOpen = true"
         class="text-white focus:outline-none lg:hidden"
+        data-testid="sidebar-button"
       >
         <svg
           class="h-6 w-6"
@@ -35,7 +36,10 @@
       </button>
 
       <div v-if="store.authUser" class="flex items-center space-x-5 ml-3">
-        <router-link to="/dashboard">
+        <router-link
+          to="/dashboard"          
+          data-testid="home-link"
+        >
           <HomeIcon class="w-6 h-6 text-white" />
           <span class="sr-only">Dashboard</span>
         </router-link>        
@@ -115,6 +119,7 @@
           <router-link
             to="/"
             class="block px-4 py-2 text-sm text-white hover:bg-gray-400"
+            data-testid="logout-link"
           >
             <Logout />
           </router-link> 
