@@ -1,8 +1,7 @@
 <script setup>
-  import { ref, computed } from "vue";
+  import { ref } from "vue";
   import { useAuthStore } from '@/stores/Auth'
   import { useSidebar } from "../hooks/useSidebar.js";
-  import LoginIcon from "@/components/icons/LoginIcon.vue";
   import HomeIcon from "@/components/icons/HomeIcon.vue";
   import Logout from "@/components/Logout.vue";
   import IconBell from "@/components/icons/IconBell.vue";
@@ -12,7 +11,7 @@
 
   const { isOpen } = useSidebar()
   const dropdownOpen = ref(false)
-  const store = computed(() => useAuthStore())
+  const store = useAuthStore()
 </script>
 
 <template>

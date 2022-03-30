@@ -1,18 +1,20 @@
-import { computed } from "vue"
 import { useAuthStore } from '@/stores/Auth'
 
 export default {  
-  baseURL: process.env.VUE_APP_API_URL,  
-  withCredentials: true, 
+  baseURL: import.meta.env.VUE_APP_API_URL,
+  withCredentials: true,
+  customHeaders: null,
+  customParams: null,
+  handleSuccess: () => {},
   handleError(error) {  
-    const storeAuth = computed(() => useAuthStore())
+    const storeAuth = useAuthStore()
 
     if (error.response
       && [401, 419].includes(error.response.status)    
-      && storeAuth.value.authUser 
-      && !storeAuth.value.guest
+      && storeAuth.authUser
+      && !storeAuth.guest
     ) {
-      storeAuth.value.logout();
+      storeAuth.logout();
     }
     
     return Promise.reject(error);
