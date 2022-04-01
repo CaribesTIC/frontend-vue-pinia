@@ -1,6 +1,6 @@
 import { createPinia } from 'pinia'
 import { useAuthStore } from '@/stores/Auth' 
-import init from "@/models/Http/init.js";
+import init from "@/models/Http/init";
 
 test('should be initialized well', () => { 
   expect(init).toHaveProperty('handleError') 

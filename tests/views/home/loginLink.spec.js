@@ -1,6 +1,6 @@
 import { mount, flushPromises } from '@vue/test-utils'
 import { createPinia } from 'pinia'
-import router from '@/router/index'
+import router from '@/router'
 import App from '@/App.vue'
 import Login from '@/views/Login/Index.vue'
 
