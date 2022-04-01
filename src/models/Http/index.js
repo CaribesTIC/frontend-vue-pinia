@@ -15,12 +15,12 @@ export class Http {
   }
   
   defaultInit () {
-    !init.customHeaders ? init.customHeaders = {} : ''
-    !init.customParams ? init.customParams = {} : ''
-    !init.baseURL ? init.baseURL = "http://localhost" : ''
-    !init.withCredentials ? init.withCredentials = false : init.withCredentials = true
-    !init.handleSuccess ? init.handleSuccess = this.defaultHandleSuccess : ''
-    !init.handleError ? init.handleError = this.defaultHandleError : ''
+    init.customHeaders = init.customHeaders !== undefined ? init.customHeaders : {}
+    init.customParams = init.customParams !== undefined ? init.customParams : {}
+    init.baseURL = init.baseURL !== undefined ? init.baseURL : "http://localhost"
+    init.withCredentials = init.withCredentials !== undefined ? init.withCredentials : false
+    init.handleSuccess = init.handleSuccess !== undefined ? init.handleSuccess : this.defaultHandleSuccess
+    init.handleError = init.handleError !== undefined ? init.handleError : this.defaultHandleError
   }
   
   defaultHandleSuccess(response) { return response; }

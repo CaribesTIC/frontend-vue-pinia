@@ -1,11 +1,8 @@
 import { useAuthStore } from '@/stores/Auth'
 
 export default {  
-  baseURL: import.meta.env.VUE_APP_API_URL,
-  withCredentials: true,
-  customHeaders: null,
-  customParams: null,
-  handleSuccess: () => {},
+  baseURL: process.env.VUE_APP_API_URL,
+  withCredentials: true,  
   handleError(error) {  
     const storeAuth = useAuthStore()
 

@@ -1,43 +1,41 @@
 import Http from "@/models/Http";
 
-const login = async (payload) => {
+export const login = async (payload) => {
   await Http.get("/sanctum/csrf-cookie");
   return Http.post("/login", payload);
 }
 
-const logout = () => {
+export const logout = () => {
   return Http.post("/logout");
 }
 
-const forgotPassword = async (payload) => {
+export const forgotPassword = async (payload) => {
   await Http.get("/sanctum/csrf-cookie");
   return Http.post("/forgot-password", payload);
 }
 
-const getAuthUser = () => {
+export const getAuthUser = () => {
   return Http.get("/api/users/auth");
 }
 
-const resetPassword = async (payload) => {
+export const resetPassword = async (payload) => {
   await Http.get("/sanctum/csrf-cookie");
   return Http.post("/reset-password", payload);
 }
 
-const updatePassword = (payload) => {
+export const updatePassword = (payload) => {
   return Http.put("/user/password", payload);
 }
 
-const registerUser = async (payload) => {
+export const registerUser = async (payload) => {
   await Http.get("/sanctum/csrf-cookie");
   return Http.post("/register", payload);
 }
 
-const sendVerification = (payload) => {
+export const sendVerification = (payload) => {
   return Http.post("/email/verification-notification", payload);
 }
 
-const updateUser = (payload) => {
+export const updateUser = (payload) => {
   return Http.put("/user/profile-information", payload);
 }
-
-export { forgotPassword, getAuthUser, updateUser, login, logout, registerUser, resetPassword, sendVerification, updatePassword}

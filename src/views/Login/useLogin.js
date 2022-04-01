@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/Auth'
-import AuthService from "@/services/AuthService.js";
+import * as AuthService from "@/services/AuthService.js";
 import { getError } from "@/utils/helpers.js";
 
 export function useLogin() {
