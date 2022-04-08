@@ -1,27 +1,26 @@
-import { mount } from '@vue/test-utils'
-import LoginForm from '@/views/Login/Form.vue'
+import { shallowMount } from '@vue/test-utils'
+import { createPinia } from 'pinia'
+import router from '@/router'
+import LoginIndex from '@/views/Login/Index.vue'
 
-describe('Login Form Component', () => {
-  it('sets the value', async () => {
-    const wrapper = mount(LoginForm)
-  
-    const input = wrapper.find('[data-testid="email-input"] input')
-    await input.setValue('user@email.ext')
+beforeEach(() => { window.scrollTo = vi.fn() })
+afterEach(() => { vi.clearAllMocks() })
 
-    expect(input.element.value).toBe('user@email.ext')
+test('component must be mounted correctly', async () => {
+
+  const wrapper = shallowMount(LoginIndex, {
+    global: {
+      plugins: [createPinia(), router]
+    }
   })
-
-  it('emits the input to its parent', async () => {
-    const wrapper = mount(LoginForm)
-
-    await wrapper.find('[data-testid="email-input"] input').setValue('user@email.ext')
-    expect(wrapper.vm.email).toBe('user@email.ext')
   
-    await wrapper.trigger('submit.prevent')
-    expect(wrapper.emitted('submit')[0][0].email).toBe('user@email.ext')  
-    expect(wrapper.emitted('submit')).toBeTruthy()
-    expect(wrapper.emitted()).toHaveProperty('submit')
-  })
+  expect(wrapper.html()).toContain('Inicio de Sesión')
+  expect(wrapper.html()).toContain('form-stub')     
+  expect(wrapper.find('[data-testid="register-link"]').exists()).toBe(true)
+
+  const forgotPasswordLink = wrapper.find('[data-testid="forgot-password-link"]')
+  expect(forgotPasswordLink.exists()).toBe(true)  
+  expect(forgotPasswordLink.html()).toContain('to="/forgot-password"') 
+  
 })
-
 
