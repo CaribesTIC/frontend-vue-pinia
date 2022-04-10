@@ -37,7 +37,7 @@ const routes = [{
   path: "/profile",
   name: "profile",
   meta: { middleware: [auth] },
-  component: () => import("@/views/Profile.vue").then(m => m.default),
+  component: () => import("@/views/Profile/Index.vue").then(m => m.default),
 }, {
     path: "/:catchAll(.*)",
     name: "NotFound",
