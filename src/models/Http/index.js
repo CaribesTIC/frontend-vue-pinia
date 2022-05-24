@@ -52,6 +52,15 @@ export class Http {
       data: payload
     });
   }
+  
+  put(path, payload = false) {
+    return this.service.request({
+      method: "PUT",
+      url: path,
+      responseType: "json",
+      data: payload
+    });
+  }
 
   delete(path, payload = false) {
     return this.service.request({
